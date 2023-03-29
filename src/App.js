@@ -79,9 +79,10 @@ class App extends Component {
       contact =>
         contact.name.toLowerCase().includes(normalizeFilter)
     );
+
     return (
       <>
-        <Section text="Phonebook" header="true">
+        <Section text="Phonebook" header={true}>
           <ContactForm
             onSubmitForm={this.handleFormSubmit}
           />

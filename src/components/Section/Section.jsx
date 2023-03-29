@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 // import s from './Section.module.css';
 
 function Section({ text, children, header }) {
@@ -10,3 +12,9 @@ function Section({ text, children, header }) {
 }
 
 export default Section;
+
+Section.propTypes = {
+  text: PropTypes.string.isRequired,
+  header: PropTypes.bool,
+  children: PropTypes.node.isRequired,
+};

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 // import s from './Contact.module.css';
 
 function ContactList({ contacts, hadleClickButton }) {
@@ -19,3 +20,14 @@ function ContactList({ contacts, hadleClickButton }) {
 }
 
 export default ContactList;
+
+ContactList.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
+  hadleClickButton: PropTypes.func.isRequired,
+};
