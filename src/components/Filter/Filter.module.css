@@ -1,0 +1,12 @@
+.label {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: rgb(147, 147, 223);
+}
+
+.input {
+  margin-top: 5px;
+}

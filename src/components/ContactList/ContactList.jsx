@@ -1,15 +1,16 @@
 import PropTypes from 'prop-types';
-// import s from './Contact.module.css';
+import s from './ContactList.module.css';
 
 function ContactList({ contacts, hadleClickButton }) {
   return (
     <ul>
       {contacts.map(({ name, number, id }) => (
-        <li key={id}>
+        <li key={id} className={s.label}>
           {name}: {number}
           <button
             type="button"
             onClick={() => hadleClickButton(id)}
+            className={s.btn}
           >
             Delete
           </button>
