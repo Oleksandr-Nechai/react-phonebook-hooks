@@ -34,8 +34,8 @@ class App extends Component {
     filter: '',
   };
 
-  handleFilterChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+  handleFilterChange = ({ target: { name, value } }) => {
+    this.setState({ [name]: value });
   };
 
   checkName = name => {
@@ -74,10 +74,10 @@ class App extends Component {
   };
 
   render() {
-    const normalizeFilter = this.state.filter.toLowerCase();
-    const filterContacts = this.state.contacts.filter(
-      contact =>
-        contact.name.toLowerCase().includes(normalizeFilter)
+    const { filter, contacts } = this.state;
+    const normalizeFilter = filter.toLowerCase();
+    const filterContacts = contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizeFilter)
     );
 
     return (
@@ -89,7 +89,7 @@ class App extends Component {
         </Section>
         <Section text="Contacts">
           <Filter
-            filter={this.state.filter}
+            filter={filter}
             onChangeFilter={this.handleFilterChange}
           />
           <ContactList

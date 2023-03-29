@@ -9,8 +9,8 @@ class ContactForm extends Component {
     number: '',
   };
 
-  handleInputChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+  handleInputChange = ({ target: { name, value } }) => {
+    this.setState({ [name]: value });
   };
 
   handleFormSubmit = e => {
@@ -24,6 +24,7 @@ class ContactForm extends Component {
   };
 
   render() {
+    const { name, number } = this.state;
     return (
       <form
         avtocomplete="off"
@@ -37,7 +38,7 @@ class ContactForm extends Component {
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
             onChange={this.handleInputChange}
-            value={this.state.name}
+            value={name}
           />
         </label>
         <label>
@@ -48,7 +49,7 @@ class ContactForm extends Component {
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
             onChange={this.handleInputChange}
-            value={this.state.number}
+            value={number}
           />
         </label>
         <button type="submit">Add contact</button>
