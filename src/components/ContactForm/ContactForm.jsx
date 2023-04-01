@@ -1,8 +1,13 @@
 import PropTypes from 'prop-types';
-import { Field, Form, Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-
-import s from './ContactForm.module.css';
+import { Formik, ErrorMessage } from 'formik';
+import {
+  FormikStyled,
+  Items,
+  Input,
+  Button,
+  ErrorStyle,
+} from './ContactForm.styled';
 
 function ContactForm({ onSubmitForm }) {
   const handleFormSubmit = (values, actions) => {
@@ -19,20 +24,16 @@ function ContactForm({ onSubmitForm }) {
   );
 
   const phoneRegex = RegExp(
-    /^[\+]?\d?[\s]?8?[\s]?\(?0\d{2}?\)?[\s]?\d{3}[\s|-]?\d{2}[\s|-]?\d{2}$/
+    /^[\\+]?\d?[\s]?8?[\s]?\(?0\d{2}?\)?[\s]?\d{3}[\s|-]?\d{2}[\s|-]?\d{2}$/
   );
 
   const SignupSchema = Yup.object({
-    name: Yup.string(
-      "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-    )
+    name: Yup.string()
       .matches(nameRegex, 'Invalid name')
       .min(5, 'Too Short!')
       .max(30, 'Too Long!')
       .required('Required'),
-    number: Yup.string(
-      'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +'
-    )
+    number: Yup.string()
       .matches(phoneRegex, 'Invalid phone')
       .required('Required'),
   });
@@ -42,39 +43,34 @@ function ContactForm({ onSubmitForm }) {
       initialValues={initialValues}
       validationSchema={SignupSchema}
       onSubmit={handleFormSubmit}
-      className={s.form}
     >
-      <Form autoComplete="off" className={s.form}>
-        <label className={s.label}>
+      <FormikStyled autoComplete="off">
+        <Items>
           Name
-          <Field
+          <Input
             type="text"
             name="name"
-            className={s.input}
             placeholder="Rosie Simpson"
           />
           <ErrorMessage
             name="name"
-            render={msg => <div>{msg}</div>}
+            render={msg => <ErrorStyle>{msg}</ErrorStyle>}
           />
-        </label>
-        <label className={s.label}>
+        </Items>
+        <Items>
           Number
-          <Field
+          <Input
             type="tel"
             name="number"
-            className={s.input}
             placeholder="+380965432100"
           />
           <ErrorMessage
             name="number"
-            render={msg => <div>{msg}</div>}
+            render={msg => <ErrorStyle>{msg}</ErrorStyle>}
           />
-        </label>
-        <button type="submit" className={s.btn}>
-          Add contact
-        </button>
-      </Form>
+        </Items>
+        <Button type="submit">Add contact</Button>
+      </FormikStyled>
     </Formik>
   );
 }

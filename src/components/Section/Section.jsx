@@ -1,17 +1,21 @@
 import PropTypes from 'prop-types';
 
-import s from './Section.module.css';
+import { Container, Header } from './Section.styled';
 
 function Section({ text, children, header }) {
   return (
-    <div className={s.section}>
+    <Container>
       {header ? (
-        <h1 className={s.header}>{text}</h1>
+        <Header>
+          <h1>{text}</h1>
+        </Header>
       ) : (
-        <h2 className={s.header}>{text}</h2>
+        <Header>
+          <h2>{text}</h2>
+        </Header>
       )}
       {children}
-    </div>
+    </Container>
   );
 }
 
