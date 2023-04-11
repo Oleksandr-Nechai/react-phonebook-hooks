@@ -13,6 +13,26 @@ class App extends Component {
     filter: '',
   };
 
+  componentDidMount() {
+    const savedContacts =
+      localStorage.getItem('listContacts');
+
+    const listContacts = JSON.parse(savedContacts);
+
+    if (listContacts) {
+      this.setState({ contacts: listContacts });
+    }
+  }
+
+  componentDidUpdate(_, prevState) {
+    const { contacts } = this.state;
+
+    if (prevState.contacts !== contacts) {
+      const listContacts = JSON.stringify(contacts);
+      localStorage.setItem('listContacts', listContacts);
+    }
+  }
+
   handleFilterChange = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
   };
@@ -53,7 +73,7 @@ class App extends Component {
   };
 
   render() {
-    const { filter, contacts } = this.state;
+    const { filter = '', contacts } = this.state;
     const normalizeFilter = filter.toLowerCase();
     const filterContacts = contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizeFilter)
