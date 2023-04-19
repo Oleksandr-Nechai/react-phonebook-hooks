@@ -6,7 +6,7 @@ export const Label = styled.label`
   flex-direction: column;
   margin-bottom: 20px;
   font-weight: 700;
-  color: ${props => props.theme.colors.primeryColor};
+  color: ${props => props.theme.colors.primaryColor};
 `;
 
 export const Input = styled.input`

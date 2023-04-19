@@ -9,5 +9,5 @@ export const Container = styled.section`
 
 export const Header = styled.div`
   margin-bottom: 10px;
-  color: ${props => props.theme.colors.primeryColor};
+  color: ${props => props.theme.colors.primaryColor};
 `;
