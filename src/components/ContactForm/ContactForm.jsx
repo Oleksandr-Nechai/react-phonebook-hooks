@@ -41,6 +41,8 @@ function ContactForm({ onSubmitForm }) {
   return (
     <Formik
       initialValues={initialValues}
+      validateOnChange={false}
+      validateOnBlur={false}
       validationSchema={SignupSchema}
       onSubmit={handleFormSubmit}
     >
