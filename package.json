@@ -2,7 +2,7 @@
   "name": "react-phonebook",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Oleksandr-Nechai.github.io/react-phonebook",
+  "homepage": "https://Oleksandr-Nechai.github.io/react-phonebook-hooks",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -54,6 +54,6 @@
   },
   "lint-staged": {
     "*.js,jsx": "eslint --cache --fix",
-    "*.{js,jsx,css,md}": "prettier --write"
+    "*.{js,jsx,css,md}": "prettier --write",
   }
 }
